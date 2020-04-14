@@ -1,0 +1,90 @@
+﻿@model MyCrowdFund.Web.Models.ProjectViewModel
+
+    <form class="js-project  col-md-4" method="post" action="@Url.Action(" Create", "Project")">
+
+        <div class="form-group">
+            <label for="@Html.IdFor(p => p.Options.Title)"> </label>
+            <br>
+            @Html.TextBoxFor( p => p.Options.Title, new {
+                @class = "form control js-title",
+           placeholder = "Enter  Title"
+            } )
+        </div>
+        <div class="form-group ">
+            <label for="@Html.IdFor(p => p.Options.Description)">Description</label>
+            <br>
+            @Html.TextBoxFor( p => p.Options.Description, new {
+                @class = "form control js-description ",
+           placeholder = "Enter  Description "
+            } )
+        </div>
+
+        <div class="form-group ">
+            <label for="@Html.IdFor(p => p.Options.Cost)">Cost</label>
+            <br>
+            @Html.TextBoxFor( p => p.Options.Cost, new {
+               @class = "form control js-cost",
+          placeholder = "Enter Cost "
+          } )
+        </div>
+
+        <div class="form-group ">
+            <label for="@Html.IdFor(p => p.Options.Photo)">Photo </label>
+            <br>
+            @Html.TextBoxFor( p => p.Options.Photo, new {
+                @class = "form control js-photo",
+           placeholder = "Enter Photp "
+            } )
+        </div>
+
+        <div class="form-group">
+
+            <label for="@Html.IdFor(p => p.Options.Category)"> Product Category </label>
+            <br>
+            @Html.DropDownListFor( p => p.Options.Category,
+            Html.GetEnumSelectList( typeof( MyCrowdFund.ProjectCategory ) ),
+            "Select Category", new { @class = "form-control js-category" } )
+
+        </div>
+
+      
+
+            <div class="form-group col-md-4">
+                <label for="@Html.IdFor(p => p.RewardOptions.Title)">Cost</label>
+                @Html.TextBoxFor( p => p.Options.Title, new {
+                   @class = "form control js-reward-title",
+              placeholder = "Enter Cost "
+              } )
+            </div>
+
+            <div class="form-group col-md-4 ">
+                <label for="@Html.IdFor(p => p.RewardOptions.Description)">Description </label>
+                @Html.TextBoxFor( p => p.RewardOptions.Description, new {
+                    @class = "form control js-reward-description",
+               placeholder = "Enter Desc "
+                } )
+            </div>
+
+            <div class="form-group col-md-4 ">
+                <label for="@Html.IdFor(p => p.RewardOptions.Price)">Price </label>
+                @Html.TextBoxFor( p => p.RewardOptions.Price, new {
+                    @class = "form control js-reward-price",
+               placeholder = "Enter price "
+                } )
+            </div>
+            <button type="button" class=" btn btn-primary js-reward-submit"> add rew</button>
+
+
+
+
+
+        <button type="submit" class="btn btn-primary js-project-submit">Submit</button>
+    </form>
+
+<div class="alert alert-danger js-create-project-alert" role="alert"
+     style="display: none">
+</div>
+
+<div class="alert alert-success js-create-project-success" role="alert"
+     style="display: none">
+</div>

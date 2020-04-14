@@ -1,0 +1,65 @@
+﻿@model MyCrowdFund.Options.ProjectCreatorOptions
+
+
+
+    <form class="js-create-creator" method="post"
+          action="@Url.Action("CreateOwner","ProjectCreator")">
+
+
+        <div class="form-group ">
+            <label for="@Html.IdFor(c => c.Firstname)">First Name</label>
+            <br>
+            @Html.TextBoxFor( c => c.Firstname, new {
+                @class = "form control js-firstname",
+           placeholder = "Enter your First name "
+            } )
+        </div>
+        <div class="form-group ">
+            <label for="@Html.IdFor(c => c.Lastname)">Last Name</label>
+            <br>
+            @Html.TextBoxFor( c => c.Lastname, new {
+                @class = "form control js-lastname ",
+           placeholder = "Enter your Last name "
+            } )
+        </div>
+
+        <div class="form-group ">
+            <label for="@Html.IdFor(c => c.Email)">Email</label>
+            <br>
+            @Html.TextBoxFor( c => c.Email, new {
+               @class = "form control js-email",
+          placeholder = "Enter your email "
+          } )
+        </div>
+
+        <div class="form-group  ">
+            <label for="@Html.IdFor(c => c.Age)">Age </label>
+            <br>
+            @Html.TextBoxFor( c => c.Age, new {
+                @class = "form control js-age",
+           placeholder = "Enter your age "
+            } )
+        </div>
+        <div class="form-group ">
+            <label for="@Html.IdFor(c => c.Photo)">Photo</label>
+            <br>
+            @Html.TextBoxFor( c => c.Photo, new {
+                @class = "form control js-photo",
+           placeholder = "Enter your Photo "
+            } )
+        </div>
+
+
+        <button type="button" class="btn  js-button " >Submit</button>
+
+    </form>
+
+
+    <div class="alert alert-danger js-creator-alert" role="alert"
+         style="display: none">
+    </div>
+
+    <div class="alert alert-success js-creator-success" role="alert"
+         style="display: none">
+    </div>
+
