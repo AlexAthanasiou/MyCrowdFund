@@ -1,4 +1,5 @@
-﻿using MyCrowdFund.Options;
+﻿using MyCrowdFund.Model;
+using MyCrowdFund.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,6 @@ namespace MyCrowdFund.Services {
 
         Task<ApiResult<Project>> SearchProjectByIdAsync( int projectId );
 
-        Task<ApiResult<Project>> BuyProjectAsync (int projectId, int backerId, int rewardId );
+        Task<ApiResult<BackerProject>> BuyProjectAsync (int projectId, int backerId, int rewardId );
     }
 }

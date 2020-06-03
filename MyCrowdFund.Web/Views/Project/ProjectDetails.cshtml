@@ -1,0 +1,108 @@
+﻿@model MyCrowdFund.Web.Models.ProjectViewModel
+
+@{
+    <img src="@Model.Proj.Photo" class="card-img-top">
+
+    <div @*class="card" style="width: 18rem;"*@>
+
+
+
+        <div @*class="card-body"*@>
+            <h5 @*class="card-title"*@> Title: @Model.Proj.Title</h5>
+            <h5 @*class="card-title"*@>Category: @Model.Proj.Category</h5>
+            <h5 @*class="card-title"*@>Total Cost: @Model.Proj.Cost</h5>
+
+        </div>
+
+
+        <div class="progress">
+            @*<h5>Financial Progress</h5>*@
+            <div class="progress-bar" role="progressbar" style="width: @Model.Prog%" aria-valuenow="@Model.Prog" aria-valuemin="0" aria-valuemax="100"> <h5>Financial Progress</h5> </div>
+        </div>
+
+
+        <p>
+
+            <div class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Rewards
+            </div>
+
+        </p>
+
+
+
+        @{
+            foreach ( var r in Model.RewardList ) {
+
+
+
+
+                <div class="collapse card-columns" id="collapseExample">
+                    <div>
+
+
+                        <h5 class="card-title">@r.Title</h5>
+                        <h5 class="card-title">@r.Price</h5>
+                        <p class="js-reward-id" id=" reward" style="display :none"> @r.Id </p>
+
+                        @{
+                            if ( !User.IsInRole( "Backer" ) ) {
+                                <a class="btn btn-primary" href="@Url.Action("Login", "Account")"> Buy</a>
+
+                            } else {
+                                <button type="button" class="btn btn-primary js-buy">Buy </button>
+
+                            }
+
+                        }
+
+
+                    </div>
+                </div>
+
+
+
+            }
+
+
+
+            <div>
+
+                @{
+                    if ( User.IsInRole( "ProjectCreator" ) ) {
+                        <a href="@Url.Action("Create", "Reward", new { id = Model.Proj.Id } ) " class="btn btn-primary" value="@Model.Proj.Id">Create Reward</a>
+
+
+                    }
+
+
+                }
+
+
+            </div>
+
+
+
+
+
+
+
+        }
+
+    </div>
+
+
+    @*<a href="@Url.Action("Create", "Reward", new { id = Model.Proj.Id } ) " class="btn btn-primary" value="@Model.Proj.Id">Create Reward</a>*@
+
+
+
+}
+
+<div class="alert alert-danger js-buy-reward-alert" role="alert"
+     style="display: none">
+</div>
+
+<div class="alert alert-success js-buy-reward-success" role="alert"
+     style="display: none">
+</div>
+

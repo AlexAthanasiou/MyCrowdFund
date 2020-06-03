@@ -15,6 +15,11 @@ namespace MyCrowdFund.Options {
 
         public string Photo { get; set; }
 
+        public string Username { get; set; }
+
+        public string Password { get; set; }
+
+
 
     }
 }

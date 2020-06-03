@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -22,7 +23,8 @@ namespace MyCrowdFund.Web {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices( IServiceCollection services ) {
             services.AddControllersWithViews();
-           
+            services.AddAuthentication( CookieAuthenticationDefaults.AuthenticationScheme ).AddCookie();
+
         }
 
         public void ConfigureContainer( ContainerBuilder builder ) {
@@ -40,6 +42,7 @@ namespace MyCrowdFund.Web {
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             app.UseRouting();
 
@@ -50,6 +53,8 @@ namespace MyCrowdFund.Web {
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}" );
             } );
+
+            
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyCrowdFund.Data;
 using MyCrowdFund.Options;
@@ -36,12 +37,31 @@ namespace MyCrowdFund.Web.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> CreateOwner(
+        public async Task<IActionResult> Create(
             [FromBody] ProjectCreatorOptions options ) {
 
             var creator = await csvc_.NewProjectCretorAsync( options );
 
             return creator.AsStatusResult();
+        }
+
+        [HttpGet ("projectCreator/ {id} ")]
+        [Authorize( Roles = "ProjectCreator" )]
+        public IActionResult BrowseMyProjects(int id) {
+
+
+            var proj = context_
+                .Set<Project>()
+                .Where( p => p.CreatorId == id )
+                .ToList();
+
+            var model = new ProjectCreatorViewModel() {
+
+                MyProjects = proj
+            };
+
+            return View( model );
+
         }
     }
 }

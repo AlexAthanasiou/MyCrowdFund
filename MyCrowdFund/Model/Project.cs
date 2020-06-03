@@ -1,5 +1,6 @@
 ﻿using MyCrowdFund.Model;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace MyCrowdFund
 {
@@ -19,7 +20,7 @@ namespace MyCrowdFund
         public ProjectCategory Category { get; set; }
 
         public decimal FinancialProgress { get; set; }
-
+        
         public ICollection<Reward> ProjectRewards { get; set; }
 
         public ProjectCreator Creator { get; set; }

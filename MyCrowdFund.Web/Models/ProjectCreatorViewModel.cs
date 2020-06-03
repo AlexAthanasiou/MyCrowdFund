@@ -9,6 +9,10 @@ namespace MyCrowdFund.Web.Models {
 
         public ProjectCreatorOptions options { get; set; }
 
+        public List<Project> MyProjects { get; set; }
+
+        
+
 
     }
 }

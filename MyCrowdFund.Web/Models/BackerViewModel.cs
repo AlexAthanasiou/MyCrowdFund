@@ -8,5 +8,7 @@ namespace MyCrowdFund.Web.Models {
     public class BackerViewModel {
 
         public CreateBackerOptions Options { get; set; }
+
+        public List<Project> MyProjects { get; set; }
     }
 }

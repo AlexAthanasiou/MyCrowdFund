@@ -2,84 +2,81 @@
 
     <form class="js-project  col-md-4" method="post" action="@Url.Action(" Create", "Project")">
 
-        <div class="form-group">
-            <label for="@Html.IdFor(p => p.Options.Title)"> </label>
+        @*<div class="form-group">
+            <label for="@Html.IdFor(p => p.Model.Title)"> Title</label>
             <br>
-            @Html.TextBoxFor( p => p.Options.Title, new {
+            @Html.TextBoxFor( p => p.Model.Title, new {
                 @class = "form control js-title",
            placeholder = "Enter  Title"
             } )
+        </div>*@
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control js-title">
         </div>
-        <div class="form-group ">
-            <label for="@Html.IdFor(p => p.Options.Description)">Description</label>
+        @*<div class="form-group ">
+            <label for="@Html.IdFor(p => p.Model.Description)">Description</label>
             <br>
-            @Html.TextBoxFor( p => p.Options.Description, new {
+            @Html.TextBoxFor( p => p.Model.Description, new {
                 @class = "form control js-description ",
            placeholder = "Enter  Description "
             } )
+        </div>*@
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" class="form-control js-description">
         </div>
 
-        <div class="form-group ">
-            <label for="@Html.IdFor(p => p.Options.Cost)">Cost</label>
+        @*<div class="form-group ">
+            <label for="@Html.IdFor(p => p.Model.Cost)">Cost</label>
             <br>
-            @Html.TextBoxFor( p => p.Options.Cost, new {
+            @Html.TextBoxFor( p => p.Model.Cost, new {
                @class = "form control js-cost",
           placeholder = "Enter Cost "
           } )
+        </div>*@
+        <div class="form-group">
+            <label>Total Cost</label>
+            <input type="text" class="form-control js-cost">
         </div>
 
-        <div class="form-group ">
-            <label for="@Html.IdFor(p => p.Options.Photo)">Photo </label>
+        @*<div class="form-group ">
+            <label for="@Html.IdFor(p => p.Model.Photo)">Photo </label>
             <br>
-            @Html.TextBoxFor( p => p.Options.Photo, new {
+            @Html.TextBoxFor( p => p.Model.Photo, new {
                 @class = "form control js-photo",
            placeholder = "Enter Photp "
             } )
+        </div>*@
+        <div class="form-group">
+            <label>Photo</label>
+            <input type="text" class="form-control js-photo">
         </div>
 
         <div class="form-group">
 
-            <label for="@Html.IdFor(p => p.Options.Category)"> Product Category </label>
+            <label for="@Html.IdFor(p => p.Model.Category)"> Product Category </label>
             <br>
-            @Html.DropDownListFor( p => p.Options.Category,
-            Html.GetEnumSelectList( typeof( MyCrowdFund.ProjectCategory ) ),
+            @Html.DropDownListFor( p => p.Model.Category,
+            Html.GetEnumSelectList( typeof( MyCrowdFund.ProjectCategory ) ).Skip( 1 ),
             "Select Category", new { @class = "form-control js-category" } )
+
+
 
         </div>
 
-      
+        <div class=" form-group ">
+            @Html.HiddenFor( p => p.UserId,
+          new { @class = "form-control js-tid", placeholder = "enter tid" } )
 
-            <div class="form-group col-md-4">
-                <label for="@Html.IdFor(p => p.RewardOptions.Title)">Cost</label>
-                @Html.TextBoxFor( p => p.Options.Title, new {
-                   @class = "form control js-reward-title",
-              placeholder = "Enter Cost "
-              } )
-            </div>
-
-            <div class="form-group col-md-4 ">
-                <label for="@Html.IdFor(p => p.RewardOptions.Description)">Description </label>
-                @Html.TextBoxFor( p => p.RewardOptions.Description, new {
-                    @class = "form control js-reward-description",
-               placeholder = "Enter Desc "
-                } )
-            </div>
-
-            <div class="form-group col-md-4 ">
-                <label for="@Html.IdFor(p => p.RewardOptions.Price)">Price </label>
-                @Html.TextBoxFor( p => p.RewardOptions.Price, new {
-                    @class = "form control js-reward-price",
-               placeholder = "Enter price "
-                } )
-            </div>
-            <button type="button" class=" btn btn-primary js-reward-submit"> add rew</button>
+        </div>
 
 
+        <button type="button" class="btn btn-primary js-project-submit" @*onclick="window.location.href('@Url.ActionLink("Create","Reward")')"*@>Submit</button>
 
 
-
-        <button type="submit" class="btn btn-primary js-project-submit">Submit</button>
     </form>
+
 
 <div class="alert alert-danger js-create-project-alert" role="alert"
      style="display: none">

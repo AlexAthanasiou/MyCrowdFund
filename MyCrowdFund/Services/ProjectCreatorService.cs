@@ -43,6 +43,12 @@ namespace MyCrowdFund.Services {
             if ( string.IsNullOrWhiteSpace( creatorOptions.Photo ) )
                 return new ApiResult<ProjectCreator>( StatusCode.BadRequest, " Photo's link is null " );
 
+            if ( string.IsNullOrWhiteSpace( creatorOptions.Username ) )
+                return new ApiResult<ProjectCreator>( StatusCode.BadRequest, " username is null " );
+
+            if ( string.IsNullOrWhiteSpace( creatorOptions.Password ) )
+                return new ApiResult<ProjectCreator>( StatusCode.BadRequest, " password is null " );
+
             var exists = await  SearchProjectCreator(
                 new SearchProjectCreatorOptions()
                 {
@@ -59,6 +65,8 @@ namespace MyCrowdFund.Services {
                 Age = creatorOptions.Age,
                 Email = creatorOptions.Email,
                 Photo = creatorOptions.Photo,
+                Username = creatorOptions.Username,
+                Password = creatorOptions.Password,
                 DateCreated = DateTime.Now
             };
 

@@ -9,14 +9,15 @@ namespace MyCrowdFund.Services {
     public class RewardService : IRewardService {
 
         private readonly MyCrowdFundDbContext context_;
-        private readonly IProjectCreatorService crsv_;
+      
         private readonly ILoggerService log_;
 
+
         public RewardService( MyCrowdFundDbContext context,
-            IProjectCreatorService crsv, ILoggerService log  ) {
+           ILoggerService log  ) {
 
             context_ = context;
-            crsv_ = crsv;
+          
             log_ = log;
         }
 
@@ -47,7 +48,7 @@ namespace MyCrowdFund.Services {
             } ).SingleOrDefaultAsync();
 
             if ( search != null )
-                return new ApiResult<Reward>( StatusCode.NotFound, " Reward not found " );
+                return new ApiResult<Reward>( StatusCode.NotFound, " Reward exists " );
 
             var newReward = new Reward()
             {
@@ -57,6 +58,8 @@ namespace MyCrowdFund.Services {
                 RewardCreatorId = creatorId,
                 ProjectId = projectId
             };
+
+        
 
             var success = false;
 

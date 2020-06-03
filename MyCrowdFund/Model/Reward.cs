@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MyCrowdFund.Model {
     public class Reward {
@@ -16,8 +17,9 @@ namespace MyCrowdFund.Model {
 
         public int RewardCreatorId { get; set; }
 
+        [JsonIgnore]
         public Project Project { get; set; }
-
+        [JsonIgnore]
         public int ProjectId { get; set; }
 
        

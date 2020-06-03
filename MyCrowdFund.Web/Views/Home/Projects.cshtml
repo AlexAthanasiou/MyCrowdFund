@@ -1,0 +1,19 @@
+﻿@model MyCrowdFund.Web.Models.ProjectViewModel
+
+
+
+@{
+
+    foreach ( var p in Model.ProjectList ) {
+
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@p.Title</h5>
+                <h5 class="card-title">@p.Category</h5>
+
+                <a href="@Url.Action("ProjectDetails", "Project", new { id = p.Id } ) " class="btn btn-primary" value="@p.Id">Go somewhere</a>
+            </div>
+        </div>
+    }
+}

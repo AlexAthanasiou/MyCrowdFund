@@ -22,12 +22,12 @@ namespace MyCrowdFund.Test {
 
             var options = new CreateRewardOptions()
             {
-                Title = "Reward 2",
-                Description = " some desc ",
-                Price = 1500.00M
+                Title = "Reward 5",
+                Description = " some  ",
+                Price = 200.00M
             };
 
-            var isCreated = await  rsvc_.CreateRewardAsync( 1, 1, options );
+            var isCreated = await  rsvc_.CreateRewardAsync( 1, 2, options );
 
             Assert.NotNull( isCreated.Data );
         }

@@ -149,3 +149,12 @@ C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcore
 C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Debug.dll
 C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\MyCrowdFund.Web.csproj.CoreCompileInputs.cache
 C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\MyCrowdFund.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\Reward\Create.cshtml.g.cs
+C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Projects.cshtml.g.cs
+C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\Project\ProjectDetails.cshtml.g.cs
+C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\Backer\BrowseMyProjects.cshtml.g.cs
+C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\ProjectCreator\BrowseMyProjects.cshtml.g.cs
+C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\Project\BrowseByCategory.cshtml.g.cs
+C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Some.cshtml.g.cs
+C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\SearchProject.cshtml.g.cs
+C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs

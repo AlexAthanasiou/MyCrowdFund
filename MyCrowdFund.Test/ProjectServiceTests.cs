@@ -23,15 +23,15 @@ namespace MyCrowdFund.Test {
 
             var options = new CreateProjectOptions()
             {
-                Title = " New Project2",
+                Title = " New 5",
                 Description = "Some Description",
                 Cost = 1000.00M,
                 Photo = " Some Photo ",
-                Category = ProjectCategory.Arts,
+                Category = ProjectCategory.DesignAndTech,
                 
             };
 
-            var project = await psvc_.CreateProjectAsync(2, options );
+            var project = await psvc_.CreateProjectAsync(1, options );
 
             Assert.NotNull( project.Data );
 
@@ -47,9 +47,9 @@ namespace MyCrowdFund.Test {
         [Fact]
         public async Task BuyProject_Success() {
 
-            var isbought = await psvc_.BuyProjectAsync( 1, 1, 1 );
+            var isbought = await psvc_.BuyProjectAsync( 2, 1, 6 );
 
-            Assert.NotNull( isbought.Data );
+            Assert.NotNull( isbought );
         }
 
     }

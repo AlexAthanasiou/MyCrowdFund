@@ -1,10 +1,8 @@
-﻿// create owner
+﻿////// create owner
 
-$('.js-button').on('click', function()  {
+$('.js-submit-creator').on('click', function()  {
 
     
-
-    alert("sas");
    
     $('.js-submit-creator').attr('disabled', true);
 
@@ -13,19 +11,24 @@ $('.js-button').on('click', function()  {
     let email = $('.js-email').val();
     let age = parseInt($('.js-age').val());
     let photo = $('.js-photo').val();
+    let username = $('.js-username').val();
+    let password = $('.js-password').val();
+
 
 
     let data = JSON.stringify({
 
-        firstname : firstname,// property = to let property
+        firstname : firstname,
         lastname : lastname,
         email : email,
         age : age,
-        photo : photo
+        photo: photo,
+        username: username,
+        password: password
         });
  
     $.ajax({
-        url: '/ProjectCreator/CreateOwner',
+        url: '/ProjectCreator/Create',
         type: 'POST',
         contentType: 'application/json',
         data: data
@@ -53,15 +56,20 @@ $('.js-button').on('click', function()  {
 
 
 
-// create backer
+////// create backer
 
-$('.js-submit-backer').on('click',  () => {
+$('.js-submit-backer').on('click', function () {
+
+    $('.js-submit-backer').attr('disabled', true);
 
     let firstname = $('.js-firstname').val();
     let lastname = $('.js-lastname').val();
     let email = $('.js-email').val();
     let age = parseInt($('.js-age').val());
     let photo = $('.js-photo').val();
+    let username = $('.js-username').val();
+    let password = $('.js-password').val();
+
 
 
     let data = JSON.stringify({
@@ -70,10 +78,12 @@ $('.js-submit-backer').on('click',  () => {
         lastname : lastname,
         email : email,
         age : age,
-        photo : photo
+        photo: photo,
+        username: username,
+        password: password
     });
 
-   // debugger;
+   
 
     $.ajax({
         url: '/Backer/Create',
@@ -83,83 +93,169 @@ $('.js-submit-backer').on('click',  () => {
 
     }).done((backer) => {
         $('.alert').hide();
-        let $alertArea = $('.js-create-backer-success');
+        let $alertArea = $('.js-backer-success');
         $alertArea.html(`Successfully added backer with name ${backer.firstname}`);
-        alertArea.show();
-        $('js-create-backer').hide();
+        $alertArea.show();
+        $('form.js-create-backer').hide();
     }).fail((xhr) => {
         $('.alert').hide();
-        let $alertArea = $('.js-create-backer-alert');
+        let $alertArea = $('.js-backer-alert');
         $alertArea.html(xhr.responseText);
         $alertArea.fadeIn();
         setTimeout(function () {
-            $('.js-submit-backer').attr('disabled', false);
+            $('form.js-submit-backer').attr('disabled', false);
         }, 300);
     });
 
 });
 
-//// create project
+////// create project
 
-//let rewards = [];
+$('.js-project-submit').on('click', function () {
+
+    let title = $('.js-title').val();
+    let description = $('.js-description').val();
+    let cost = parseFloat($('.js-cost').val());
+    let category = parseInt($('.js-category').val());
+    let photo = $('.js-photo').val();
+    let userid = parseInt($('.js-tid').val());
+
+    
 
 
-//$('.js-reward-submit').on('click', () => {
 
+    let data = JSON.stringify({
 
-//    let tit = $('.js-reward-title').val();
-//    let desc = $('.js-reward-description');
-//    let price = parseFloat($('.js-reward-price').val());
+        Model: {
 
-//    rewards.push({
+            Title: title,
+            Description: description,
+            Cost: cost,
+            Category: category,
+            Photo: photo,
 
-//        title: tit,
-//        description: desc,
-//        price: price
-//    });
+        },
 
-//});
-
-//$('.js-project').on('click', function () {
-
-//    let title = $('.js-title').val();
-//    let description = $('.js-description').val();
-//    let cost = $('.js-cost').val();
-//    let category = parseInt($('.js-category').val());
-//    let photo = $('.js-photo').val();
+     
+        UserId : userid
+                 
+    });
+  
    
 
+    $.ajax({
+        url: '/Project/Create',
+        type: 'POST',
+        contentType: 'application/json',
+        data:  data
 
-//    let data = JSON.stringify({
+        }).done((project) => {
+            $('.js-project-submit').hide();
+            let alertArea = $('.js-create-project-success');
+            alertArea.html(`Successfully added proj with title: ${project.title}`);
+            alertArea.show();
+            $('form.js-project').hide();
+        }).fail((xhr) => {
+            $('.alert').hide();
+            let $alertArea = $('.js-create-project-alert');
+            $alertArea.html(xhr.responseText);
+            $alertArea.fadeIn();
+            setTimeout(function () {
+                $('.js-project-submit').attr('disabled', false);
+            }, 300);
+    });
 
-//        title = title,// property = to let property
-//        description = description,
-//        cost = cost,
-//        category = category,
-//        photo = photo,
+});
+
+//// create Reward
+
+$('.js-reward-submit').on('click', function () {
+
+    let title = $('.js-title').val();
+    let description = $('.js-desc').val();
+    let price = parseFloat($('.js-price').val());
+
+    let tempId = parseInt($('.js-tid').val());
+  
 
 
-//    });
 
-//    $.ajax({
-//        url: '/Project/Create',
-//        type: 'POST',
-//        contentType: 'application/json',
-//        data: data
-//    }).done((project) => {
-//        $('.js-project-submit').hide();
-//        let alertArea = $('.js-project-success');
-//        $alertArea.html(`Successfully added backer with name ${backer.firstname}`);
-//        $alertArea.show();
-//        $('form.js-project').hide();
-//    }).fail((xhr) => {
-//        $('.alert').hide();
-//        let $alertArea = $('.js-project-alert');
-//        $alertArea.html(xhr.responseText);
-//        $alertArea.fadeIn();
-//        setTimeout(function () {
-//            $('.js-submit-backer').attr('disabled', false);
-//        }, 300);
-//    });
+    let data = JSON.stringify({
 
-//});
+            title : title,
+            description : description,
+            price: price,
+            tempId: tempId
+
+           
+
+    });
+
+    $.ajax({
+        url: '/Reward/Create',
+        type: 'POST',
+        contentType: 'application/json',
+        data: data
+
+    }).done((reward) => {
+        $('.js-reward-submit').hide();
+        let alertArea = $('.js-create-reward-success');
+        alertArea.html(`Successfully added proj with tit ${reward.title}`);
+        alertArea.show();
+        $('form.js-reward').hide();
+    }).fail((xhr) => {
+        $('.alert').hide();
+        let $alertArea = $('.js-create-reward-alert');
+        $alertArea.html(xhr.responseText);
+        $alertArea.fadeIn();
+        setTimeout(function () {
+            $('.js-reward-submit').attr('disabled', false);
+        }, 300);
+    });
+
+});
+
+$('.js-buy').on('click', function () {
+
+   
+    let id = parseInt($('.js-reward-id').text());
+
+    
+
+    let data = JSON.stringify({
+
+        rewardId: id
+
+
+    });
+
+    $.ajax({
+        url: '/Project/BuyProject',
+        type: 'POST',
+        contentType: 'application/json',
+        data: data
+
+    }).done((reward) => {
+        $('.js-buy').hide();
+        let alertArea = $('.js-buy-reward-success');
+        alertArea.html(`Successfully bought the reward`);
+        alertArea.show();
+       
+      
+    }).fail((xhr) => {
+        $('.alert').hide();
+        let $alertArea = $('.js-buy-reward-alert');
+        $alertArea.html(xhr.responseText);
+        $alertArea.fadeIn();
+        setTimeout(function () {
+            $('.js-buy').attr('disabled', false);
+        }, 300);
+      
+    });
+
+});
+
+
+
+
+

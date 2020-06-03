@@ -20,6 +20,10 @@ namespace MyCrowdFund.Options {
 
         public ICollection<Reward> RewardList { get; set; }
 
+        
+
+        
+
         public CreateProjectOptions() {
 
             RewardList = new List<Reward>();

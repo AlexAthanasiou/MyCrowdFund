@@ -40,6 +40,13 @@ namespace MyCrowdFund.Services {
             if ( string.IsNullOrWhiteSpace( createOptions.Photo ) )
                 return new ApiResult<Backer>( StatusCode.BadRequest, " photo link is null " );
 
+            if ( string.IsNullOrWhiteSpace( createOptions.Username ) )
+                return new ApiResult<Backer>( StatusCode.BadRequest, " username is null " );
+
+            if ( string.IsNullOrWhiteSpace( createOptions.Password ) )
+                return new ApiResult<Backer>( StatusCode.BadRequest, " password is null " );
+
+
             var exists = await SearchBacker( new SearchBackerOptions()
             {
                 Email = createOptions.Email
@@ -57,6 +64,8 @@ namespace MyCrowdFund.Services {
                 Age = createOptions.Age,
                 Email = createOptions.Email,
                 Photo = createOptions.Photo,
+                Username = createOptions.Username,
+                Password = createOptions.Password,
                 DateCreated = DateTime.Now
             };
 

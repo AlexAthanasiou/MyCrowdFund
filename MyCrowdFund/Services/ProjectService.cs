@@ -103,7 +103,7 @@ namespace MyCrowdFund.Services {
 
             if ( !string.IsNullOrWhiteSpace( searchProjectOptions.Title ) )
                 query = query
-                    .Where( p => p.Title == searchProjectOptions.Title );
+                    .Where( p => p.Title.Contains( searchProjectOptions.Title ));
            
             return query.Take( 500 );
         }  
@@ -164,27 +164,27 @@ namespace MyCrowdFund.Services {
             return ApiResult<Project>.CreateSuccess( tempProject.Data );
         }
 
-        public async Task<ApiResult<Project>> BuyProjectAsync(int projectId, int backerId, int rewardId ) {
+        public async Task<ApiResult<BackerProject>> BuyProjectAsync(int projectId, int backerId, int rewardId ) {
 
             if ( projectId <= 0 ||
                 backerId <= 0 ||
                 rewardId <= 0 )
-                return new ApiResult<Project>( StatusCode.BadRequest, " Ids are null " );
+                return new ApiResult<BackerProject>( StatusCode.BadRequest, " Ids are null " );
 
             var tempProject = await SearchProjectByIdAsync( projectId );
 
             if ( tempProject.Data == null )
-                return new ApiResult<Project>( StatusCode.NotFound, " Project not found " );
+                return new ApiResult<BackerProject>( StatusCode.NotFound, " Project not found " );
 
             var tempBacker = await bsvc_.SearchBackerByIdAsync( backerId );
 
             if ( tempBacker.Data == null )
-                return new ApiResult<Project>( StatusCode.NotFound, " Backer not found " );
+                return new ApiResult<BackerProject>( StatusCode.NotFound, " Backer not found " );
 
             var tempReward = await rsvc_.SearchRewardByIdAsync( rewardId );
 
             if ( tempReward.Data == null )
-                return new ApiResult<Project>( StatusCode.NotFound, " Reward not found " );
+                return new ApiResult<BackerProject>( StatusCode.NotFound, " Reward not found " );
 
             var tempBp = new BackerProject()
             {
@@ -212,12 +212,12 @@ namespace MyCrowdFund.Services {
 
                 log_.LogError
                     ( StatusCode.InternalServerError, $"Error save  Project : {tempProject.Data.Title} " );
-                return new ApiResult<Project>
+                return new ApiResult<BackerProject>
                     ( StatusCode.InternalServerError, " Error save  Project " );
             }
 
 
-            return ApiResult<Project>.CreateSuccess(new ApiResult<Project>(success).Data);
+            return ApiResult<BackerProject>.CreateSuccess(tempBp);
 
             
 

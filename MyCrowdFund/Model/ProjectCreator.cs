@@ -1,4 +1,5 @@
-﻿using MyCrowdFund.Model;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using MyCrowdFund.Model;
 using System;
 using System.Collections.Generic;
 using System.Net.Mail;
@@ -8,6 +9,10 @@ namespace MyCrowdFund
     public class ProjectCreator { 
  
         public int Id { get; set; }
+
+        public string Username { get; set; }
+
+        public string Password { get; set; }
 
         public string Firstname { get; set; }
 
