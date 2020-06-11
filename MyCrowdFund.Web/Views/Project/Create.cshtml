@@ -2,52 +2,21 @@
 
     <form class="js-project  col-md-4" method="post" action="@Url.Action(" Create", "Project")">
 
-        @*<div class="form-group">
-            <label for="@Html.IdFor(p => p.Model.Title)"> Title</label>
-            <br>
-            @Html.TextBoxFor( p => p.Model.Title, new {
-                @class = "form control js-title",
-           placeholder = "Enter  Title"
-            } )
-        </div>*@
         <div class="form-group">
             <label>Title</label>
             <input type="text" class="form-control js-title">
         </div>
-        @*<div class="form-group ">
-            <label for="@Html.IdFor(p => p.Model.Description)">Description</label>
-            <br>
-            @Html.TextBoxFor( p => p.Model.Description, new {
-                @class = "form control js-description ",
-           placeholder = "Enter  Description "
-            } )
-        </div>*@
+       
         <div class="form-group">
             <label>Description</label>
             <input type="text" class="form-control js-description">
         </div>
 
-        @*<div class="form-group ">
-            <label for="@Html.IdFor(p => p.Model.Cost)">Cost</label>
-            <br>
-            @Html.TextBoxFor( p => p.Model.Cost, new {
-               @class = "form control js-cost",
-          placeholder = "Enter Cost "
-          } )
-        </div>*@
         <div class="form-group">
             <label>Total Cost</label>
             <input type="text" class="form-control js-cost">
         </div>
 
-        @*<div class="form-group ">
-            <label for="@Html.IdFor(p => p.Model.Photo)">Photo </label>
-            <br>
-            @Html.TextBoxFor( p => p.Model.Photo, new {
-                @class = "form control js-photo",
-           placeholder = "Enter Photp "
-            } )
-        </div>*@
         <div class="form-group">
             <label>Photo</label>
             <input type="text" class="form-control js-photo">
@@ -60,23 +29,15 @@
             @Html.DropDownListFor( p => p.Model.Category,
             Html.GetEnumSelectList( typeof( MyCrowdFund.ProjectCategory ) ).Skip( 1 ),
             "Select Category", new { @class = "form-control js-category" } )
-
-
-
         </div>
 
         <div class=" form-group ">
             @Html.HiddenFor( p => p.UserId,
           new { @class = "form-control js-tid", placeholder = "enter tid" } )
-
         </div>
 
-
-        <button type="button" class="btn btn-primary js-project-submit" @*onclick="window.location.href('@Url.ActionLink("Create","Reward")')"*@>Submit</button>
-
-
+        <button type="button" class="btn btn-primary js-project-submit"> Submit</button>
     </form>
-
 
 <div class="alert alert-danger js-create-project-alert" role="alert"
      style="display: none">

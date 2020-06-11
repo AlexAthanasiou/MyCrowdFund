@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MyCrowdFund.Options {
-   public class CreateBackerOptions {
+﻿namespace MyCrowdFund.Options {
+    public class CreateBackerOptions {
 
         public string Firstname { get; set; }
 
@@ -18,8 +14,5 @@ namespace MyCrowdFund.Options {
         public string Username { get; set; }
 
         public string Password { get; set; }
-
-
-
     }
 }

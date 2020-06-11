@@ -155,6 +155,7 @@ C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcore
 C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\Backer\BrowseMyProjects.cshtml.g.cs
 C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\ProjectCreator\BrowseMyProjects.cshtml.g.cs
 C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\Project\BrowseByCategory.cshtml.g.cs
-C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Some.cshtml.g.cs
-C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\SearchProject.cshtml.g.cs
 C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\SearchProject.cshtml.g.cs
+C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\ProjectCreator\Profile.cshtml.g.cs
+C:\Users\alex_\Desktop\MyCrowdFund\MyCrowdFund\MyCrowdFund.Web\obj\Debug\netcoreapp3.1\Razor\Views\Backer\Profile.cshtml.g.cs

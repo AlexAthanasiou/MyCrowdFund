@@ -10,7 +10,6 @@ using Xunit;
 namespace MyCrowdFund.Test {
    public class ProjectCreatorTests_SearchProjectCreator : IClassFixture<MyCrowdFundFixture>
     {
-
         private readonly IProjectCreatorService psvc_;
 
         public ProjectCreatorTests_SearchProjectCreator(MyCrowdFundFixture fixture) {
@@ -39,9 +38,7 @@ namespace MyCrowdFund.Test {
         public void SearchProjectCreator_Fail() {
 
             var options = new SearchProjectCreatorOptions()
-            {
-                //Firstname = "Alex",
-                //Lastname = "Athanasiou",
+            {              
                 Email = "george@hotmail.gr"
             };
 
@@ -50,8 +47,6 @@ namespace MyCrowdFund.Test {
                 .SingleOrDefault();
 
             Assert.Null( search );
-
-
         }
     }
 }

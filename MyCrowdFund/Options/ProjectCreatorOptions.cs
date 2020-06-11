@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MyCrowdFund.Options {
-   public class ProjectCreatorOptions {
-
+﻿namespace MyCrowdFund.Options {
+    public class ProjectCreatorOptions {
 
         public int Id { get; set; }
 
@@ -21,6 +16,5 @@ namespace MyCrowdFund.Options {
         public string Username { get; set; }
 
         public string Password { get; set; }
-
     }
 }

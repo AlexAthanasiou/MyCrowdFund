@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyCrowdFund.Data;
 using MyCrowdFund.Model;
@@ -10,9 +6,11 @@ using MyCrowdFund.Options;
 using MyCrowdFund.Services;
 using MyCrowdFund.Web.Extensions;
 using MyCrowdFund.Web.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace MyCrowdFund.Web.Controllers
-{
+namespace MyCrowdFund.Web.Controllers {
     public class BackerController : Controller
     {
         private readonly IBackerService bsvc_;
@@ -33,6 +31,22 @@ namespace MyCrowdFund.Web.Controllers
             return View();
         }
 
+        [HttpGet( "project/{backerId}" )]
+        public IActionResult Profile( int backerId ) {
+
+            var backer = context_
+                .Set<Backer>()
+                .Where( p => p.Id == backerId )
+                .SingleOrDefault();
+
+            var model = new BackerViewModel() {
+                Backer = backer
+            };
+
+            return View( model );
+
+        }
+
         [HttpGet]
         public IActionResult Create() {
             return View();
@@ -49,9 +63,7 @@ namespace MyCrowdFund.Web.Controllers
 
         [HttpGet ("backer/{id}")]
         [Authorize( Roles ="Backer")]
-        public async Task<IActionResult> BrowseMyProjects(int id) {
-
-            
+        public async Task<IActionResult> BrowseMyProjects(int id) {            
 
             var backProj = context_
                 .Set<BackerProject>()
@@ -63,24 +75,16 @@ namespace MyCrowdFund.Web.Controllers
             foreach(var bp in backProj) {
 
                 var proj = await psvc_.SearchProjectByIdAsync( bp.ProjectId );
-
                 projList.Add( proj.Data );
 
             }
            
             var model = new BackerViewModel(){
-
                 MyProjects = projList
             };
 
             return View( model );
 
-
-        }
-
-
-       
-
-       
+        }     
     }
 }

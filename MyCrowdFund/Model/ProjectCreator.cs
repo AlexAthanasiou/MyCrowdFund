@@ -1,13 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-using MyCrowdFund.Model;
+﻿using MyCrowdFund.Model;
 using System;
 using System.Collections.Generic;
-using System.Net.Mail;
 
-namespace MyCrowdFund
-{
+namespace MyCrowdFund {
     public class ProjectCreator { 
- 
+
         public int Id { get; set; }
 
         public string Username { get; set; }
@@ -35,7 +32,5 @@ namespace MyCrowdFund
             MyProjects = new List<Project>();
             MyRewards = new List<Reward>();
         }
-
-
     }
 }

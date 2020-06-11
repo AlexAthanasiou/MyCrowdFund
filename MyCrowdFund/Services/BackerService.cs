@@ -2,15 +2,12 @@
 using MyCrowdFund.Data;
 using MyCrowdFund.Options;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyCrowdFund.Services {
-   public  class BackerService : IBackerService
+    public  class BackerService : IBackerService
     {
-
         private readonly MyCrowdFundDbContext context_;
         private readonly ILoggerService log_;
 
@@ -46,7 +43,6 @@ namespace MyCrowdFund.Services {
             if ( string.IsNullOrWhiteSpace( createOptions.Password ) )
                 return new ApiResult<Backer>( StatusCode.BadRequest, " password is null " );
 
-
             var exists = await SearchBacker( new SearchBackerOptions()
             {
                 Email = createOptions.Email
@@ -80,8 +76,7 @@ namespace MyCrowdFund.Services {
                     ( StatusCode.InternalServerError, $"Error save Backer : {newBacker.Lastname} " );
                 return new ApiResult<Backer>
                     ( StatusCode.InternalServerError, " Error save Backer " );
-            }
-            
+            }          
 
             return ApiResult<Backer>.CreateSuccess( newBacker );
         }
@@ -108,7 +103,6 @@ namespace MyCrowdFund.Services {
                     .Where( b => b.Lastname == searchOptions.Lastname );
 
             return query.Take( 500 );
-
         }
 
         public async Task<ApiResult<Backer>> SearchBackerByIdAsync( int backerId ) {
@@ -124,7 +118,6 @@ namespace MyCrowdFund.Services {
                 return null;
 
             return ApiResult<Backer>.CreateSuccess( tempBacker );
-
         }
 
         public async Task<ApiResult<Backer>> UpdateBackerInfoAsync(int backerId,

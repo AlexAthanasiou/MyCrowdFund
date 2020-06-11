@@ -1,13 +1,10 @@
 ﻿using Autofac;
 using MyCrowdFund.Data;
-using MyCrowdFund.Model;
 using MyCrowdFund.Services;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace MyCrowdFund { 
-  public class ServiceRegistrator : Module
+namespace MyCrowdFund {
+    public class ServiceRegistrator : Module
   {
         public static void RegisterServices( ContainerBuilder builder) {
 
@@ -48,16 +45,13 @@ namespace MyCrowdFund {
         public static IContainer GetContainer() {
 
             var builder = new ContainerBuilder();
-
             RegisterServices( builder );
 
             return builder.Build();
         }
 
         protected override void Load( ContainerBuilder builder ) {
-
             RegisterServices( builder );
         }
-
-  }
+    }
 }

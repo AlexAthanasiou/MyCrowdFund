@@ -1,0 +1,45 @@
+﻿@model MyCrowdFund.Web.Models.ProjectCreatorViewModel
+
+    <form class="js-update-creator col-md-4" method="post"
+          action="@Url.Action("Profile","ProjectCreator")">
+
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="@Model.Creator.Firstname" class="form-control js-firstname">
+        </div>
+
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="@Model.Creator.Lastname" class="form-control js-lastname">
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" placeholder="@Model.Creator.Email" class="form-control js-email">
+        </div>
+
+        <div class="form-group">
+            <label>Age</label>
+            <input type="text" placeholder="@Model.Creator.Age" class="form-control js-age">
+        </div>
+
+        <div class="form-group">
+            <label>Photo</label>
+            <input type="text" placeholder="@Model.Creator.Photo" class="form-control js-photo">
+        </div>
+
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" placeholder="@Model.Creator.Username" class="form-control js-username">
+        </div>  
+        
+        <div class=" form-group ">
+            @Html.HiddenFor( r => r.Creator.Id,
+          new { @class = "form-control js-crid", placeholder = "enter tid" } )
+        </div>
+
+        <button type="button" class="btn btn-primary  js-update-submit ">Update</button>
+    </form>
+
+
+

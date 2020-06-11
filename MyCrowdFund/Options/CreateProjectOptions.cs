@@ -1,10 +1,8 @@
 ﻿using MyCrowdFund.Model;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MyCrowdFund.Options {
-   public class CreateProjectOptions {
+    public class CreateProjectOptions {
 
         public int Id { get; set; }
 
@@ -20,15 +18,9 @@ namespace MyCrowdFund.Options {
 
         public ICollection<Reward> RewardList { get; set; }
 
-        
-
-        
-
         public CreateProjectOptions() {
 
             RewardList = new List<Reward>();
-        }
-
-       
+        }       
     }
 }

@@ -11,7 +11,6 @@ namespace MyCrowdFund.Services {
 
          Task<ApiResult<Backer>> SearchBackerByIdAsync( int backerId );
 
-
          Task<ApiResult<Backer>> UpdateBackerInfoAsync( int backerId,
             UpdateBackerOptions updateOptions );
     }  

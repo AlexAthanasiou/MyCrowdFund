@@ -2,12 +2,10 @@
 using MyCrowdFund.Options;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyCrowdFund.Web.Models {
 
-    
+    [Serializable]
     public class ProjectViewModel {
 
         public CreateProjectOptions Model { get; set; }
@@ -22,16 +20,8 @@ namespace MyCrowdFund.Web.Models {
 
         public List<ProjectCategory> Category { get; set; }
 
-
-
         public int UserId { get; set; }
 
         public int  Prog { get; set; }
-
-
-
-
-
-
     }
 }

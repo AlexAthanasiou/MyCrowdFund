@@ -7,6 +7,7 @@ namespace MyCrowdFund.Model {
     public class Reward {
 
         public int Id { get; set; }
+
         public string Title { get; set; }
 
         public string Description { get; set; }
@@ -19,10 +20,8 @@ namespace MyCrowdFund.Model {
 
         [JsonIgnore]
         public Project Project { get; set; }
+
         [JsonIgnore]
-        public int ProjectId { get; set; }
-
-       
-
+        public int ProjectId { get; set; }     
     }
 }

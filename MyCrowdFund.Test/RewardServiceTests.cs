@@ -1,14 +1,11 @@
 ﻿using Autofac;
 using MyCrowdFund.Options;
 using MyCrowdFund.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace MyCrowdFund.Test {
-  public  class RewardServiceTests : IClassFixture<MyCrowdFundFixture>
+    public  class RewardServiceTests : IClassFixture<MyCrowdFundFixture>
     {
         private readonly IRewardService rsvc_;
 
@@ -31,7 +28,5 @@ namespace MyCrowdFund.Test {
 
             Assert.NotNull( isCreated.Data );
         }
-
-
     }
 }

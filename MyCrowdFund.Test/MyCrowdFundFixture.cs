@@ -1,11 +1,9 @@
 ﻿using Autofac;
 using MyCrowdFund.Data;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyCrowdFund.Test {
-  public  class MyCrowdFundFixture : IDisposable 
+    public  class MyCrowdFundFixture : IDisposable 
     {
         public MyCrowdFundDbContext DbContext { get; private set; }
 
@@ -23,7 +21,5 @@ namespace MyCrowdFund.Test {
 
             Container.Dispose();
         }
-
-
     }
 }

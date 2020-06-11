@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MyCrowdFund.Services {
-  public  class ApiResult<T>
+﻿namespace MyCrowdFund.Services {
+    public  class ApiResult<T>
   {
         public StatusCode ErrorCode { get; set; }
 
@@ -36,10 +32,6 @@ namespace MyCrowdFund.Services {
                 Data = data,
                 ErrorCode = StatusCode.Ok
             };
-
         }
-
-
-
     }
 }

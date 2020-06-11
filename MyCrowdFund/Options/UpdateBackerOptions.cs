@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MyCrowdFund.Options {
+﻿namespace MyCrowdFund.Options {
     public class UpdateBackerOptions {
         public string Lastname { get; set; }
 

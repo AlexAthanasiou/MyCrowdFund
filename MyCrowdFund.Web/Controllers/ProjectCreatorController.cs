@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyCrowdFund.Data;
 using MyCrowdFund.Options;
 using MyCrowdFund.Services;
 using MyCrowdFund.Web.Extensions;
 using MyCrowdFund.Web.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace MyCrowdFund.Web.Controllers
-{
+namespace MyCrowdFund.Web.Controllers {
     public class ProjectCreatorController : Controller
     {
         private readonly IProjectCreatorService csvc_;
@@ -28,13 +25,23 @@ namespace MyCrowdFund.Web.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult Create() {
-           
-            return View();
-          
-        }
+        [HttpGet("projectCreator/{creatorId}")]
+        public IActionResult Profile(int creatorId) {
 
+            var creator = context_
+                .Set<ProjectCreator>()
+                .Where( p => p.Id == creatorId )
+                .SingleOrDefault();
+
+            var model = new ProjectCreatorViewModel() {
+                Creator = creator
+            };
+
+            return View( model );
+
+
+
+        }    
 
         [HttpPost]
         public async Task<IActionResult> Create(
@@ -49,7 +56,6 @@ namespace MyCrowdFund.Web.Controllers
         [Authorize( Roles = "ProjectCreator" )]
         public IActionResult BrowseMyProjects(int id) {
 
-
             var proj = context_
                 .Set<Project>()
                 .Where( p => p.CreatorId == id )
@@ -61,7 +67,6 @@ namespace MyCrowdFund.Web.Controllers
             };
 
             return View( model );
-
         }
     }
 }

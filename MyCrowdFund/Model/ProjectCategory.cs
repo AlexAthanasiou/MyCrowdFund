@@ -19,6 +19,5 @@
         Music = 7,
 
         Publishing = 8
-
     }
 }

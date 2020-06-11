@@ -15,8 +15,6 @@ namespace MyCrowdFund.Test {
             csvc_ = fixture.Container.Resolve<IProjectCreatorService>();               
         }
 
-
-
         [Fact]
         public async Task NewProjectCreator_Success() {
 

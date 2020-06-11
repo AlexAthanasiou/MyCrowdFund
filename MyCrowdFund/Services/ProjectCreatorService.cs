@@ -2,15 +2,12 @@
 using MyCrowdFund.Data;
 using MyCrowdFund.Options;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyCrowdFund.Services {
     class ProjectCreatorService : IProjectCreatorService 
     {
-
         private readonly MyCrowdFundDbContext context_;
         private readonly ILoggerService log_;
 
@@ -20,13 +17,10 @@ namespace MyCrowdFund.Services {
             log_ = log;
         }
 
-      
-
         public async Task<ApiResult<ProjectCreator>> NewProjectCretorAsync( ProjectCreatorOptions creatorOptions ) {
 
             if ( creatorOptions == null )
                 return new ApiResult<ProjectCreator>( StatusCode.BadRequest, " null fields " );
-
 
             if ( string.IsNullOrWhiteSpace( creatorOptions.Firstname ) )
                 return new ApiResult<ProjectCreator>( StatusCode.BadRequest, "Firstname is null " );
@@ -71,6 +65,7 @@ namespace MyCrowdFund.Services {
             };
 
            await context_.AddAsync( newProjectCreator );
+
             try {
                 await context_.SaveChangesAsync();
             }

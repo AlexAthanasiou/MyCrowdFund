@@ -1,12 +1,9 @@
 ﻿using MyCrowdFund.Model;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
-namespace MyCrowdFund
-{
+namespace MyCrowdFund {
     public class Project
     {
-
         public int Id { get; set; }
 
         public string Title { get; set; }
@@ -28,19 +25,11 @@ namespace MyCrowdFund
         public int CreatorId { get; set; }
 
         public ICollection<BackerProject> BackerList { get; set; }
-
-      
-
+ 
         public Project() {
 
             ProjectRewards = new List<Reward>();
             BackerList = new List<BackerProject>();
         }
-
-
-
-
-
-
     }
 }

@@ -2,7 +2,6 @@
 using MyCrowdFund.Data;
 using MyCrowdFund.Model;
 using MyCrowdFund.Options;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -67,7 +66,6 @@ namespace MyCrowdFund.Services {
                 Photo = CreateProjectOptions.Photo,
                 Category = CreateProjectOptions.Category,
                 CreatorId = creatorId
-
             };
 
             var success = false;
@@ -149,6 +147,7 @@ namespace MyCrowdFund.Services {
                 tempProject.Data.Photo = options.Photo;
 
            var  success = false;
+
             try {
                 success = await context_.SaveChangesAsync() > 0;
             }
@@ -159,8 +158,6 @@ namespace MyCrowdFund.Services {
                 return new ApiResult<Project>
                     ( StatusCode.InternalServerError, " Error update Project " );
             }
-
-
             return ApiResult<Project>.CreateSuccess( tempProject.Data );
         }
 
@@ -216,16 +213,7 @@ namespace MyCrowdFund.Services {
                     ( StatusCode.InternalServerError, " Error save  Project " );
             }
 
-
             return ApiResult<BackerProject>.CreateSuccess(tempBp);
-
-            
-
-
-
-
         }
-
-
     }
 }

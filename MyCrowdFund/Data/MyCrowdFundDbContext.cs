@@ -4,7 +4,6 @@ using MyCrowdFund.Model;
 namespace MyCrowdFund.Data {
     public class MyCrowdFundDbContext : DbContext
     {
-
         private readonly string connectionString_;
 
         public MyCrowdFundDbContext() : base()
@@ -22,9 +21,8 @@ namespace MyCrowdFund.Data {
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<ProjectCreator>()
-                .ToTable("ProjectCreator");
-                                
-
+                .ToTable("ProjectCreator"); 
+            
             modelBuilder.Entity<Backer>()
                 .ToTable("Backer");
 
@@ -39,11 +37,7 @@ namespace MyCrowdFund.Data {
 
             modelBuilder.Entity<BackerProject>()
                 .ToTable( "BackerProject" );
-                
-             //   .HasKey(bp => new { bp.BackerId, bp.ProjectId });
-
-           
-
+            
             modelBuilder.Entity<Reward>()
                  .ToTable( "Reward" );
 
@@ -59,20 +53,12 @@ namespace MyCrowdFund.Data {
                 .HasForeignKey( k => k.ProjectId )
                 .OnDelete( DeleteBehavior.Cascade );
 
-
-
             modelBuilder.Entity<BackerReward>()
                 .ToTable( "BackerReward" );
-               // .HasKey( br => new { br.RewardId, br.BackerId } );
-
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-
             optionsBuilder.UseSqlServer(connectionString_);
         }
-
-
-
     }
 }

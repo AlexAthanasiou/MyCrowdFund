@@ -3,8 +3,6 @@
 <div class="row card-columns">
     @{
 
-
-
         foreach ( var p in Model.MyProjects ) {
 
             <div class="card" style="width: 18rem;">
@@ -12,7 +10,6 @@
                 <div class="card-body">
                     <h5 class="card-title">@p.Title</h5>
                     <h5 class="card-title">@p.Category</h5>
-
                     <a href="@Url.Action("ProjectDetails", "Project", new { id = p.Id } ) " class="btn btn-primary" value="@p.Id">Go somewhere</a>
                 </div>
             </div>

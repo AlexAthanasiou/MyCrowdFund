@@ -8,16 +8,13 @@ using System.Threading.Tasks;
 namespace MyCrowdFund.Services {
     public class RewardService : IRewardService {
 
-        private readonly MyCrowdFundDbContext context_;
-      
+        private readonly MyCrowdFundDbContext context_;     
         private readonly ILoggerService log_;
-
 
         public RewardService( MyCrowdFundDbContext context,
            ILoggerService log  ) {
 
-            context_ = context;
-          
+            context_ = context;        
             log_ = log;
         }
 
@@ -58,9 +55,7 @@ namespace MyCrowdFund.Services {
                 RewardCreatorId = creatorId,
                 ProjectId = projectId
             };
-
-        
-
+ 
             var success = false;
 
            await context_.AddAsync( newReward );
@@ -76,7 +71,6 @@ namespace MyCrowdFund.Services {
             }
 
             return ApiResult<Reward>.CreateSuccess( newReward );
-
         }
 
         public IQueryable<Reward> SearchReward( SearchRewardOptions options ) {
@@ -95,7 +89,6 @@ namespace MyCrowdFund.Services {
                 query = query.Where( r => r.Title == options.Title );
 
             return query.Take( 500 );
-
         }
 
         public async Task<ApiResult<Reward>> SearchRewardByIdAsync( int rewardId ) {
@@ -142,8 +135,6 @@ namespace MyCrowdFund.Services {
             }
 
             return ApiResult<Reward>.CreateSuccess( new ApiResult<Reward>( success ).Data );
-
         }
-
     }
 }

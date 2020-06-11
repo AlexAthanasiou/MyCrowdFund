@@ -1,5 +1,3 @@
-using System;
-
 namespace MyCrowdFund.Web.Models {
     public class ErrorViewModel {
         public string RequestId { get; set; }

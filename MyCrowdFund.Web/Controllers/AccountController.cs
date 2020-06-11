@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using MyCrowdFund.Data;
+using System.Linq;
+using System.Security.Claims;
 
-namespace MyCrowdFund.Web.Controllers
-{
+namespace MyCrowdFund.Web.Controllers {
     public class AccountController : Controller {
 
         private readonly MyCrowdFundDbContext context_;
 
         public AccountController( MyCrowdFundDbContext context) {
 
-            context_ = context;
-                
+            context_ = context;                
         }
         public IActionResult Index() {
             return View();
@@ -27,23 +22,20 @@ namespace MyCrowdFund.Web.Controllers
         public IActionResult Login() {
 
             return View();
-
         }
 
         [HttpPost]
         public IActionResult Login(
-            string userName, string password ) {
 
+            string userName, string password ) {
             ClaimsIdentity identity = null;
             int tempId = default;
-
             var isAuthenticated = false;
 
             if ( string.IsNullOrWhiteSpace(userName) ||
                 string.IsNullOrWhiteSpace( password )) {
 
                 return RedirectToAction( "Login", "Account" );
-
             }
 
             var tempCreator = context_
@@ -58,11 +50,6 @@ namespace MyCrowdFund.Web.Controllers
                  && c.Password == password )
                 .SingleOrDefault();
 
-            //if ( tempCreator == null &&         
-            //    tempBacker == null ) {
-            //    return RedirectToAction( "Login", "Account" );
-            //}
-
             if (tempCreator != null ) {
 
                 if ( tempCreator.Username.Equals( userName )
@@ -74,15 +61,11 @@ namespace MyCrowdFund.Web.Controllers
                 }, CookieAuthenticationDefaults.AuthenticationScheme );
 
                     isAuthenticated = true;
-
                     tempId = tempCreator.Id;
                 }
-
-
             }
 
             if ( tempBacker != null) {
-
 
                 if ( tempBacker.Username.Equals( userName )
                     && tempBacker.Password.Equals( password ) ) {
@@ -95,11 +78,7 @@ namespace MyCrowdFund.Web.Controllers
                     isAuthenticated = true;
                     tempId = tempBacker.Id;
                 }
-
             }
-
-           
-
 
             if( isAuthenticated) {
 
@@ -109,17 +88,16 @@ namespace MyCrowdFund.Web.Controllers
                     CookieAuthenticationDefaults.AuthenticationScheme, principal );
 
                 return RedirectToAction( "Index", "Home", new { id = tempId } );
-
             }
 
             return View();
         }
-
+     
         [HttpGet]
         public IActionResult Logout() {
+
             var login = HttpContext.SignOutAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme );
-
             return RedirectToAction( "Index", "Home" );
         }
     }

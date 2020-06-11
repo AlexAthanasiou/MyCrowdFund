@@ -1,15 +1,12 @@
 ﻿using Autofac;
 using MyCrowdFund.Options;
 using MyCrowdFund.Services;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace MyCrowdFund.Test {
-   public  class BackerServiceTests : IClassFixture<MyCrowdFundFixture>
+    public  class BackerServiceTests : IClassFixture<MyCrowdFundFixture>
     {
         private readonly IBackerService bsvc_;
 
@@ -17,7 +14,6 @@ namespace MyCrowdFund.Test {
 
             bsvc_ = fixture.Container.Resolve<IBackerService>();
         }
-
 
         [Fact]
         public async Task CreateBacker_Success() {
@@ -32,7 +28,6 @@ namespace MyCrowdFund.Test {
             };
 
             var backer = await  bsvc_.CreateBackerAsync( options );
-
             Assert.NotNull( backer.Data );
 
             var search = bsvc_.SearchBacker( new SearchBackerOptions()

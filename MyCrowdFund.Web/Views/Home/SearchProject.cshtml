@@ -1,24 +1,18 @@
 ﻿@model MyCrowdFund.Web.Models.ProjectViewModel
 
-<div class="row card-columns">
-
+<div class="row card-columns col-md-5">
     @{
-
-
         foreach ( var p in Model.ProjectList ) {
 
-           
-
-            <div class="card" style="width: 18rem;">
-                <img src="@p.Photo" class="card-img-top" alt="...">
+            <div class="card " style="width: 22rem;">
+                <a href="@Url.Action("ProjectDetails", "Project", new { id = p.Id } ) ">
+                    <img src="@p.Photo" class="card-img-top">
+                </a>
                 <div class="card-body">
                     <h5 class="card-title">@p.Title</h5>
                     <h5 class="card-title">@p.Category</h5>
-
-                    <a href="@Url.Action("ProjectDetails", "Project", new { id = p.Id } ) " class="btn btn-primary" value="@p.Id">Details</a>
                 </div>
             </div>
         }
     }
-
 </div>

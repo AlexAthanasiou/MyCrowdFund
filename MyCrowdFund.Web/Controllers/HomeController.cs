@@ -1,28 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc;
 using MyCrowdFund.Data;
 using MyCrowdFund.Options;
 using MyCrowdFund.Services;
 using MyCrowdFund.Web.Models;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace MyCrowdFund.Web.Controllers {
 
-    
     public class HomeController : Controller {
 
-        private readonly ILogger<HomeController> _logger;
         private readonly MyCrowdFundDbContext context_;
         private readonly IProjectService psvc_;
 
-        public HomeController( ILogger<HomeController> logger,
+        public HomeController( 
             IProjectService psvc, MyCrowdFundDbContext context ) {
-            _logger = logger;
             context_ = context;
             psvc_ = psvc;
         }
@@ -30,37 +24,42 @@ namespace MyCrowdFund.Web.Controllers {
         [HttpGet]
         public IActionResult Index(  ) {
 
+            var list = TempData[ "pj" ] as string;
 
-            var projectList = context_
-                .Set<Project>()
-                .OrderByDescending( k => k.FinancialProgress )
-                .ToList();
+            if(list != null) {
+                var x = JsonConvert.DeserializeObject<List<Project>>( list );
 
+                var modelP = new ProjectViewModel() {
+                    ProjectList = x
+                };
 
+                return PartialView( modelP );
 
-            var model = new ProjectViewModel() {
+            } else {
 
-                BestProjects = projectList.Take( 3 ).ToList(),
-                ProjectList = projectList
-               
-            };
+                var projectList = context_
+                    .Set<Project>()
+                    .OrderByDescending( k => k.FinancialProgress )
+                    .ToList();
 
-            return View( model );
+                var model = new ProjectViewModel() {
+
+                    BestProjects = projectList.Take( 3 ).ToList(),
+                    ProjectList = projectList
+                };
+
+                return View( model );
+            }
         }
 
-
-
-        [HttpGet ("home/ {id}")]     
+        [HttpGet( "home/ {id}" )]     
         public IActionResult Index(int id) {
-
 
             var projectList = context_
                 .Set<Project>()              
                 .OrderByDescending( k => k.FinancialProgress )              
                 .ToList();
-
-           
-
+          
             var model = new ProjectViewModel() {
 
                 BestProjects = projectList.Take(3).ToList(),
@@ -71,27 +70,32 @@ namespace MyCrowdFund.Web.Controllers {
             return View(model);
         }
 
-        //[HttpPost]
-        //public IActionResult Index([FromBody] ProjectViewModel model) {
+        [HttpGet]
+        public IActionResult SearchProject() {
 
-        //    var options = new SearchProjectOptions() {
-        //        Title = model.Title
-        //    };
+            var list = TempData[ "pj" ] as string;
+            var x = JsonConvert.DeserializeObject<List<Project>>( list );
 
-        //    var projects = psvc_.SearchProject( options ).ToList();
+            var model = new ProjectViewModel() {
+                ProjectList = x
+            };
 
+            return View( "SearchProject", model );
+        }
 
+        [HttpPost]
+        public IActionResult SearchProject( /*[FromBody] SearchViewModel objectName*/ string objectName ) {
 
-        //    var model1 = new ProjectViewModel() {
-        //        ProjectList = projects
-        //    };
+            var projectOptions = new SearchProjectOptions() {
+                Title = objectName
+            };
 
+            var mod = psvc_.SearchProject( projectOptions ).ToList();
+            var json = JsonConvert.SerializeObject( mod, Formatting.Indented );
+            TempData[ "pj" ] = json;
 
-
-        //    return View("SearchProject", model1 );
-
-
-        //}
+            return RedirectToAction( "SearchProject", "Home" );
+        }
 
         public IActionResult Privacy() {
             return View();
@@ -107,9 +111,7 @@ namespace MyCrowdFund.Web.Controllers {
             var projView = new ProjectViewModel() {
                 ProjectList = query
             };
-
-            
-
+          
             return View(projView);
         }
 
@@ -118,28 +120,6 @@ namespace MyCrowdFund.Web.Controllers {
 
             return View();
         }
-
-
-        //[HttpPost]
-        //public IActionResult SearchProject( [FromBody] ProjectViewModel model ) {
-
-        //    var options = new SearchProjectOptions() {
-        //        Title = model.Title
-        //    };
-
-        //    var projects = psvc_.SearchProject( options ).ToList();
-
-
-
-        //    var model1 = new ProjectViewModel() {
-        //        ProjectList = projects
-        //    };
-
-
-
-        //    return View( model1 );
-        //}
-
 
         [ResponseCache( Duration = 0, Location = ResponseCacheLocation.None, NoStore = true )]
         public IActionResult Error() {

@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-
-namespace MyCrowdFund.Web.Models {
+﻿namespace MyCrowdFund.Web.Models {
     public class BuyProjectModel {
-
        
         public int RewardId { get; set; }
-
     }
 }
